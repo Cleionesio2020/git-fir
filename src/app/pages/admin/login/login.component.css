@@ -1,0 +1,21 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ mat-card{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgba(0, 0, 255, 0.089);
+    color: rgb(15, 57, 112);
+}
+
+.btn-login{
+margin-top: 20px;
+}
+
+

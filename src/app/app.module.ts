@@ -19,12 +19,19 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './pages/admin/login/login.component';
+import { NovoRegistroComponent } from './pages/novo-registro/novo-registro.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     InicialComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent,
+    NovoRegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDividerModule,
     MatButtonModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

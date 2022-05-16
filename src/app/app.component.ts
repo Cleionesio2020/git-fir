@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import {MatAccordion} from '@angular/material/expansion';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
-  opened = true
+  
 }

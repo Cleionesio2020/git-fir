@@ -1,0 +1,64 @@
+<div class="container">
+    <h2>Cleionesio Soares Ribeiro -  Bm: 87134-x</h2>
+  
+    <mat-divider> </mat-divider>
+    <br/>
+  
+    <mat-card>
+      <mat-card-title>Referência Elogiosa</mat-card-title>
+      <mat-card-subtitle>Data lancamento 03/04/2022
+        <mat-divider> </mat-divider>
+      </mat-card-subtitle>
+      
+      <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z1">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Origem / Sintese / Data
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Orígem </mat-label>
+            <textarea matInput placeholder="Aqui a orígem..."></textarea>
+          </mat-form-field>
+           
+  
+           <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sintese </mat-label>
+            <textarea matInput placeholder="Aqui a síntese..."></textarea>
+          </mat-form-field>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel class="mat-elevation-z1">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Decisão
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+           <p>Data: 03/04/1987</p> 
+           <P>Decisão: aqui vai a decisao</P>
+        </mat-expansion-panel>
+  
+  
+        <mat-expansion-panel class="mat-elevation-z1">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Defesa
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+           <p>Data: 03/04/1987</p> 
+           <P>Defesa: aqui vai a defesa</P>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <br/>
+      <button mat-raised-button color="primary">Salvar</button>
+    </mat-card>
+  </div>
