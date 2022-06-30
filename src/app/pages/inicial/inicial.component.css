@@ -1,6 +1,58 @@
-.example-full-width{
-    width: 300px;
+.filtro {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.card_content{
-    height: 80%;
+
+.bm_field {
+  width: 100px;
+}
+
+table {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+th {
+  text-align: left;
+}
+
+.example-card {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-lancamentos {
+  display: flex;
+  background-color: rgb(242, 247, 245);
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 20px 0; 
+}
+
+.content-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.lancameto-title-principal {
+  font-size: 18px;
+  color: rgb(40, 66, 88);
+}
+
+.title-bio{
+  font-size: 20px;
+  color: rgb(40, 66, 88);
 }

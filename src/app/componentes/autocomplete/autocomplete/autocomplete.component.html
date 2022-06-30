@@ -1,0 +1,21 @@
+<form class="example-form">
+    <div class="filtro">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input type="text"   matInput  #inputShearch 
+            (input)="search(inputShearch.value)" [matAutocomplete]="auto">
+            <mat-label>Fitrar por nome</mat-label>
+            <button mat-icon-button matSuffix *ngIf="inputShearch.value" (click)="inputShearch.value = ''">
+                <mat-icon>close</mat-icon>
+            </button>
+
+             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+            (optionSelected)="onSelected($event)">
+                <mat-option *ngFor="let guarda of filteredOptions$ | async" [value]="guarda">
+                    {{guarda.nome}}
+                </mat-option>
+            </mat-autocomplete>
+
+        </mat-form-field>
+
+    </div>
+</form>

@@ -6,6 +6,7 @@ import { AuthGuardGuard } from './pages/admin/login/auth-guard.guard';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { InicialComponent } from './pages/inicial/inicial.component';
 import { NovoRegistroComponent } from './pages/novo-registro/novo-registro.component';
+import { VisualizarFichaComponent } from './pages/visualizar-ficha/visualizar-ficha.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: '', component: InicialComponent },
       { path: 'inicial', component: InicialComponent },
       { path: 'novo', component: NovoRegistroComponent },
+      { path: 'visualizar', component: VisualizarFichaComponent },
     ],
     canActivate:[AuthGuardGuard]
   },

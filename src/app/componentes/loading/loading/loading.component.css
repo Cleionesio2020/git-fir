@@ -1,0 +1,17 @@
+.loading{
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.35);
+    display: flex;
+   height: 100%;
+   width: 100%;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner{
+    height: -30px;
+    width: -30px;
+}

@@ -4,14 +4,14 @@
             <mat-card-title style="margin-bottom: 20px;">Login - Sistema Fir</mat-card-title>
             <mat-form-field class="example-full-width">
                 <mat-label>Usuário</mat-label>
-                <input matInput type="text">
+                <input matInput type="text"  [(ngModel)]="user.username"  name="username">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Senha</mat-label>
-                <input matInput type="password">
+            <input matInput type="password" [(ngModel)]="user.password" name="password">
             </mat-form-field>
-            <button mat-raised-button color="primary" class="btn-login">ENTRAR</button>
+            <button mat-raised-button color="primary" class="btn-login" (click)="logar()">ENTRAR</button>
         </mat-card>
     </form>
 </div>

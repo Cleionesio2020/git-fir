@@ -22,7 +22,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { NovoRegistroComponent } from './pages/novo-registro/novo-registro.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { Interceptor } from './interceptors/interceptor';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingComponent } from './componentes/loading/loading/loading.component';
+import { LoginService } from './sevices/login.service';
+import { LoadingService } from './sevices/loading.service';
+import { AutocompleteComponent } from './componentes/autocomplete/autocomplete/autocomplete.component';
+import { AutocompleteService} from './sevices/autocomplete.service';
+import { DialogComponent } from './componentes/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
+import { VisualizarFichaComponent } from './pages/visualizar-ficha/visualizar-ficha.component';
 
 
 @NgModule({
@@ -31,17 +44,23 @@ import { ReactiveFormsModule } from '@angular/forms';
     InicialComponent,
     MainComponent,
     LoginComponent,
-    NovoRegistroComponent
+    NovoRegistroComponent,
+    LoadingComponent,
+    AutocompleteComponent,
+    DialogComponent,
+    VisualizarFichaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSliderModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
     MatExpansionModule,
+    MatMenuModule,
     MatFormFieldModule,
     MatDatepickerModule,
     CdkAccordionModule,
@@ -51,9 +70,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatTableModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    LoadingService,
+    AutocompleteService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: Interceptor,  multi: true
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

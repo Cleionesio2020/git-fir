@@ -1,0 +1,8 @@
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18;
+    color: rgb(196, 23, 49);
+    font-weight: 400;
+}

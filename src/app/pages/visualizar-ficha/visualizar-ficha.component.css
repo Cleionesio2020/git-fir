@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 100%;
+  }
+  .title{
+    font-size: 18px;
+  }
+
+  .card-header{
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+  }

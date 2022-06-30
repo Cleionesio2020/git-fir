@@ -1,28 +1,23 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" (click)="opened = !opened">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>GCMBH - Ficha Individual</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="icon-exit" (click)="logout()">
-      <mat-icon >exit_to_app</mat-icon>
-    </button>
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav [(opened)]="opened" mode="side">
-      <ul class="menu-ul">
-        <li> <a [routerLink]="['']">Pagina Inicial</a></li>
-        <mat-divider> </mat-divider>
-        <li><a [routerLink]="['novo']"> Novo lançamento</a></li>
-        <mat-divider> </mat-divider>
-        <li>Sobre </li>
-      </ul>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      
-      <router-outlet></router-outlet>
-     
-    </mat-sidenav-content>
-  
-  </mat-sidenav-container>
+<app-loading></app-loading>
+
+<mat-toolbar color="primary" class="toolbar" >
+  <button mat-icon-button class="example-icon" (click)="opened = !opened">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>GCMBH - FIR</span>
+  <span class="example-spacer">
+    <div class="menu">
+      <span>Inicio</span>
+      <span>Lançamento</span>
+      <span>Sobre</span>
+    </div>
+  </span>
+  <button mat-icon-button class="icon-exit" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

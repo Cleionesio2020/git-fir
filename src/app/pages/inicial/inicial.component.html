@@ -1,33 +1,70 @@
 <mat-card class="card_content">
-    <mat-card-title>Filtrar o GCM.</mat-card-title>
-    <br />
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
+  <app-autocomplete (selected)="onSelected($event)"></app-autocomplete>
 
-            <input type="text" placeholder="Nome do gcm" aria-label="Number" matInput [formControl]="myControl"
-                [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="example-full-width">
-            <input type="text" placeholder="BM do gcm" aria-label="Number" matInput [formControl]="myControl"
-                [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        <mat-divider> </mat-divider>
-        <h3>Cleionesio Soares Ribeiro</h3>
-        <mat-divider> </mat-divider>
-        <div>
-            <button mat-button color="primary">Ver registros</button>
-            <button mat-button color="primary">novo registro</button>
-        </div>
-    </form>
+  <!-- Cards with media area -->
+  <mat-card class="mat-elevation-z1">
+    <mat-card-title-group class="example-card">
+      <div class="avatar">
+        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+      </div>
+      <div class="dados">
+        <mat-card-title class="title-bio">Cleionesio Soares Ribeiro - 87134-X</mat-card-title>
+        <mat-card-subtitle>Classe Distinta</mat-card-subtitle>
+      </div>
+    </mat-card-title-group>
+
+    <mat-card class="card-lancamentos">
+
+      <div class="lancameto-title">
+        <mat-card-title class="lancameto-title-principal">Nota meritória</mat-card-title>
+        <mat-card-subtitle>12/12/2018</mat-card-subtitle>
+      </div>
+
+      <div class="content-buttons">
+        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
+        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
+        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
+      </div>
+
+
+    </mat-card>
+    <mat-card class="card-lancamentos ">
+
+      <div class="lancameto-title">
+        <mat-card-title class="lancameto-title-principal">Referência elogiosa</mat-card-title>
+        <mat-card-subtitle>12/12/2018</mat-card-subtitle>
+      </div>
+
+      <div class="content-buttons">
+        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
+        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
+        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
+      </div>
+
+    </mat-card>
+    <mat-card class="card-lancamentos">
+
+      <div class="lancameto-title">
+        <mat-card-title class="lancameto-title-principal">Elogio</mat-card-title>
+        <mat-card-subtitle>12/12/2018</mat-card-subtitle>
+      </div>
+
+      <div class="content-buttons">
+        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
+        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
+        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
+      </div>
+
+    </mat-card>
+
+  </mat-card>
+
+  <div *ngIf="guardaSelecionado">
+    {{guardaSelecionado?.nome}}<br />
+    {{ guardaSelecionado?.bm}}<br />
+    {{ guardaSelecionado?.cargo}}<br />
+  </div>
+ 
+
+
 </mat-card>
