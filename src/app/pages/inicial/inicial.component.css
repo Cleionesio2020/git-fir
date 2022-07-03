@@ -39,7 +39,7 @@ th {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  margin: 20px 0; 
+  margin: 20px 0;
 }
 
 .content-buttons {
@@ -55,4 +55,8 @@ th {
 .title-bio{
   font-size: 20px;
   color: rgb(40, 66, 88);
+}
+
+.botao-add{
+  margin-top: -10px;
 }

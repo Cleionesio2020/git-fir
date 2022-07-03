@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     this.loginService.logar(this.user).subscribe(
       data =>{
         if(data?.accessToken){
-
           localStorage.setItem('accessToken',data.accessToken)
           this.rourer.navigate(['inicial'])
         }

@@ -1,10 +1,9 @@
-export interface GuardaModell {
-    nome: string
+export class GuardaModell {
+    nome?: string
     email?: string
     nomeFuncional?: string
     telefone?: string
-    bm: string
+    bm!: string
     cargo?: string
-    id?: number
     numGt?: string
 }

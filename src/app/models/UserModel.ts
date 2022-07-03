@@ -1,6 +1,7 @@
-export interface UserModell{
-    username:string
-    email?:string
-    password:string
-    accessToken?:string
+export class UserModell{
+    id?:number;
+    username?:string;
+    email?:string;
+    password?:string;
+    accessToken?:string;
 }

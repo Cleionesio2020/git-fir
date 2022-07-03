@@ -1,0 +1,16 @@
+
+[
+  { "tipo":"Negativa","descricao":"advertência","pontos":-1},
+  { "tipo":"","descricao":"Advertência Repreenção","pontos":-2 },
+  { "tipo":"Negativa","descricao":"Suspensão até 15 dias","pontos":-2.5},
+  { "tipo":"Negativa","descricao":"Suspensão de 16 â 30 dias","pontos":-3 },
+  { "tipo":"Negativa","descricao":"Suspensão de 31 até 60 dias","pontos":-3.5},
+  {"tipo":"Negativa","descricao":"Suspensão de 61 até 90 dias","pontos":-3.5},
+  { "tipo":"Positiva","descricao":"Nota Meritória","pontos":1 },
+  { "tipo":"Positiva","descricao":"Elogio","pontos":2 },
+  {"tipo":"Positiva","descricao":"Condecoração","pontos":4 },
+  {"tipo":"Positiva","descricao":"Referência Elogiosa","pontos":0 },
+  { "tipo":"Positiva","descricao":"Dispensa de Serviço","pontos":0}
+]
+
+

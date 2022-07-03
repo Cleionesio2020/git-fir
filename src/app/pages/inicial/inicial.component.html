@@ -3,68 +3,112 @@
 
   <!-- Cards with media area -->
   <mat-card class="mat-elevation-z1">
-    <mat-card-title-group class="example-card">
+    <mat-card-title-group class="example-card" *ngIf="guardaSelecionado else otherContent">
       <div class="avatar">
-        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <img
+          mat-card-sm-image
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        />
       </div>
-      <div class="dados">
-        <mat-card-title class="title-bio">Cleionesio Soares Ribeiro - 87134-X</mat-card-title>
-        <mat-card-subtitle>Classe Distinta</mat-card-subtitle>
+      <div class="dados" *ngIf="guardaSelecionado">
+        <mat-card-title class="title-bio"
+          >{{ guardaSelecionado.nome }} -
+          {{ guardaSelecionado.bm }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ guardaSelecionado.cargo }}</mat-card-subtitle>
+
+        <button mat-stroked-button color="primary" class="botao-add" (click)="carregarPaginaEditar()">
+          Novo registro<mat-icon>add </mat-icon>
+        </button>
       </div>
     </mat-card-title-group>
 
+    <ng-template #otherContent>
+      <mat-card-title-group class="example-card">
+        <div class="avatar">
+          <img
+            mat-card-sm-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          />
+        </div>
+        <div class="dados">
+          <mat-card-title class="title-bio" >Gerenciamento de Ficha individua (FIR)</mat-card-title>
+          <mat-card-subtitle>Selecione um registro pra começar...</mat-card-subtitle>
+        </div>
+      </mat-card-title-group>
+    </ng-template>
+
     <mat-card class="card-lancamentos">
-
       <div class="lancameto-title">
-        <mat-card-title class="lancameto-title-principal">Nota meritória</mat-card-title>
+        <mat-card-title class="lancameto-title-principal"
+          >Nota meritória</mat-card-title
+        >
         <mat-card-subtitle>12/12/2018</mat-card-subtitle>
       </div>
 
       <div class="content-buttons">
-        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
-        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
-        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
+        <button mat-raised-button (click)="carregarPagina('visualizar')">
+          visualizar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="carregarPagina('novo')"
+        >
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="openDialog()">
+          Remover
+        </button>
       </div>
-
-
-    </mat-card>
-    <mat-card class="card-lancamentos ">
-
-      <div class="lancameto-title">
-        <mat-card-title class="lancameto-title-principal">Referência elogiosa</mat-card-title>
-        <mat-card-subtitle>12/12/2018</mat-card-subtitle>
-      </div>
-
-      <div class="content-buttons">
-        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
-        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
-        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
-      </div>
-
     </mat-card>
     <mat-card class="card-lancamentos">
-
       <div class="lancameto-title">
-        <mat-card-title class="lancameto-title-principal">Elogio</mat-card-title>
+        <mat-card-title class="lancameto-title-principal"
+          >Referência elogiosa</mat-card-title
+        >
         <mat-card-subtitle>12/12/2018</mat-card-subtitle>
       </div>
 
       <div class="content-buttons">
-        <button mat-raised-button  (click)="carregarPagina('visualizar')">visualizar</button>
-        <button mat-raised-button color="primary"  (click)="carregarPagina('novo')">Editar</button>
-        <button mat-raised-button color="warn" (click)="openDialog()">Remover</button>
+        <button mat-raised-button (click)="carregarPagina('visualizar')">
+          visualizar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="carregarPagina('novo')"
+        >
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="openDialog()">
+          Remover
+        </button>
+      </div>
+    </mat-card>
+    <mat-card class="card-lancamentos">
+      <div class="lancameto-title">
+        <mat-card-title class="lancameto-title-principal"
+          >Elogio</mat-card-title
+        >
+        <mat-card-subtitle>12/12/2018</mat-card-subtitle>
       </div>
 
+      <div class="content-buttons">
+        <button mat-raised-button (click)="carregarPagina('visualizar')">
+          visualizar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="carregarPagina('novo')"
+        >
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="openDialog()">
+          Remover
+        </button>
+      </div>
     </mat-card>
-
   </mat-card>
-
-  <div *ngIf="guardaSelecionado">
-    {{guardaSelecionado?.nome}}<br />
-    {{ guardaSelecionado?.bm}}<br />
-    {{ guardaSelecionado?.cargo}}<br />
-  </div>
- 
-
-
 </mat-card>
