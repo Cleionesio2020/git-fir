@@ -1,6 +1,7 @@
 .toolbar{
-  width: 100vw;
+  width: 100%;
   display: flex;
+ margin: 0;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -16,7 +17,7 @@
 
 .menu {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 30px;
   margin-right: 100px;
   font-size: 14px;
@@ -36,7 +37,7 @@
   width: 100%;
   position: fixed;
   overflow-y: scroll;
-  top: 60px;
+  top: 70px;
   right: 0;
   bottom: 0;
   left: 0;

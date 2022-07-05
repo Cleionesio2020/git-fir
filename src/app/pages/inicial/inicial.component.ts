@@ -28,31 +28,34 @@ export class InicialComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       if(params){
+        console.log(">>>>>>>>",params)
         this.lancamentoService.BuscaTodosLancametoGuarda(params.get('id')).subscribe(
           resp=>{
             if(resp){
              this.lancamentos = resp
-             this.guardaSelecionado = this.lancamentos[0].fir.guarda
+             this.guardaSelecionado = this.lancamentos[0].fir?.guarda
             }
           }
         )
+      }else{
+        this.guardaSelecionado=null;
       }
-
     });
+
   }
   //navega pra rota ao clicar no botao
   carregarPagina(param: string) {
-    this.router.navigate([`/${param}`]);
+    console.log(param)
+    this.router.navigate([`/${param}/editar/2`]);
   }
 
-  carregarPaginaEditar() {
-    this.router.navigate(['/novo',2],);
+  carregarPaginaEditar(param:string) {
+    this.router.navigate([`/novo/novo/${param}`]);
   }
 
   onSelected(event: GuardaModell) {
-    this.guardaSelecionado = event;
-    if(this.guardaSelecionado){
-      this.router.navigate([`inicial/${this.guardaSelecionado.bm}`]);
+    if(event){
+      this.router.navigate([`inicial/${event.bm}`]);
     }
   }
 

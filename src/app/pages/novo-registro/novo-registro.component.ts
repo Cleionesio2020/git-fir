@@ -1,21 +1,18 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
-import { ActivatedRoute, CanActivate } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DecisaoModell } from 'src/app/models/DecisaoModell';
-import { FirModell } from 'src/app/models/FirModel';
 import { LancamentoModell } from 'src/app/models/LancamentoModell';
 import { tipoLancamento } from 'src/app/models/TipoLancamento';
-import { UserModell } from 'src/app/models/UserModel';
 import { LancamentoService } from 'src/app/sevices/Lancamento.service';
 
 
 @Component({
   selector: 'app-novo-registro',
   templateUrl: './novo-registro.component.html',
-  styleUrls: ['./novo-registro.component.css'],
+  styleUrls: ['./novo-registro.component.css']
 })
 export class NovoRegistroComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
@@ -29,7 +26,7 @@ export class NovoRegistroComponent implements OnInit {
     private location:Location,
     private lancamentoService:LancamentoService,
     private fb: FormBuilder,
-    private route:ActivatedRoute) {}
+    private route:ActivatedRoute,) {}
 
   ngOnInit() {
     this.getTitulo()
@@ -88,9 +85,9 @@ console.log(this.lancamento)
 
   //PEGA UM POSSIVEL OBGETO PASSADO NA ROTA
   public getTitulo(): void {
-     this.route.queryParams.subscribe((res) => {
-      console.log(res)
-     this.statusDaPagian = res? 'EDITAR':'INSERIR'
+     this.route.paramMap.subscribe((res) => {
+     console.log("ID: "+res.get('id'))
+     console.log("AÇAO: "+res.get('acao'))
      }
 )}
 

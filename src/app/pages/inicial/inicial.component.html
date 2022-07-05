@@ -11,13 +11,13 @@
         />
       </div>
       <div class="dados" *ngIf="guardaSelecionado">
-        <mat-card-title class="title-bio"
-          >{{ guardaSelecionado.nome }} -
-          {{ guardaSelecionado.bm }}</mat-card-title
-        >
+        <mat-card-title class="title-bio">
+            {{ guardaSelecionado.nome }} -
+            {{ guardaSelecionado.bm }}
+          </mat-card-title>
         <mat-card-subtitle>{{ guardaSelecionado.cargo }}</mat-card-subtitle>
 
-        <button mat-stroked-button color="primary" class="botao-add" (click)="carregarPaginaEditar()">
+        <button mat-stroked-button color="primary" class="botao-add" (click)="carregarPaginaEditar( guardaSelecionado.bm)">
           Novo registro<mat-icon>add </mat-icon>
         </button>
       </div>
