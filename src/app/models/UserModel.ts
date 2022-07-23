@@ -4,4 +4,5 @@ export class UserModell{
     email?:string;
     password?:string;
     accessToken?:string;
+    roles?:string[]
 }

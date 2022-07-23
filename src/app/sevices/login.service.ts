@@ -10,6 +10,9 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginService {
   baseURL: string = 'http://localhost:8080/';
+  private userLogado = new BehaviorSubject<UserModell>({})
+
+
 
   constructor(private http: HttpClient, private router: Router) {}
   headers = { 'content-type': 'application/json' };
@@ -44,5 +47,13 @@ export class LoginService {
     } else {
       return false;
     }
+  }
+
+  public getUserLogado():Observable<UserModell>{
+    return this.userLogado.asObservable();
+  }
+
+  public setUserLogado(user:UserModell):void{
+     this.userLogado.next(user)
   }
 }

@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
-
     box-sizing: border-box;
     text-decoration: none;
     margin: 0;
@@ -11,6 +10,7 @@ body{
     font-size: 100%;
     list-style-type: none;font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 
 @use '@angular/material' as mat;
 

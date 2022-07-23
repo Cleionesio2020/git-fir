@@ -36,7 +36,6 @@ export class AutocompleteComponent implements OnInit {
 
   onSelected(selectedItem: MatAutocompleteSelectedEvent): void {
     const guardaSelecionado: GuardaModell = selectedItem.option.value;
-    console.log(guardaSelecionado)
     this.selected.emit(guardaSelecionado);
   }
 

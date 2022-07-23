@@ -1,12 +1,13 @@
-<div class="container">
+
   <mat-card>
     <div class="header">
       <div>
-        <mat-card-title>Referência Elogiosa</mat-card-title>
+        <mat-card-title class="titulo-maior">{{lancamento?.fir?.guarda?.nome}} -
+          {{lancamento?.fir?.guarda?.bm}}</mat-card-title>
+            <mat-card-subtitle>
+        <mat-card-title class="titulo-menor">{{lancamento?.tipoLancamento?.descricao}}</mat-card-title>
 
-      <mat-card-subtitle
-        >Data lancamento 03/04/2022
-
+       Data lancamento {{lancamento?.dataLancamento | date: 'dd/MM/yyyy'}}
       </mat-card-subtitle>
       </div>
       <button mat-button  (click)=" paginaInicial()">
@@ -20,13 +21,13 @@
             <mat-panel-title> Lançamento </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <mat-form-field appearance="fill" class="example-select">
+
+          <mat-form-field appearance="fill" class="example-select" formGroupName="tipoLancamentoModell" >
             <mat-label>Tipo Lancamento</mat-label>
-            <mat-select formControlName="tipoLancamento">
+            <mat-select formControlName="descricao">
               <mat-option
                 *ngFor="let lanc of  dadosCobos$ | async"
-                value="{{ lanc.descricao }}"
-              >
+                value="{{ lanc.descricao }}" >
                 {{  lanc.descricao }}
               </mat-option>
             </mat-select>
@@ -48,7 +49,8 @@
         </mat-expansion-panel>
 
         <!--Fir-->
-        <mat-expansion-panel class="mat-elevation-z1">
+        <div formGroupName="firModell">
+        <mat-expansion-panel class="mat-elevation-z1" >
           <mat-expansion-panel-header>
             <mat-panel-title> Origem / Sintese / Data </mat-panel-title>
           </mat-expansion-panel-header>
@@ -88,7 +90,7 @@
 
         <!--ABA COM OS DADOS DE DECISÃO-->
 
-        <mat-expansion-panel class="mat-elevation-z1">
+        <mat-expansion-panel class="mat-elevation-z1"  formGroupName="DecisaoModell">
           <mat-expansion-panel-header>
             <mat-panel-title> Decisão </mat-panel-title>
           </mat-expansion-panel-header>
@@ -118,7 +120,7 @@
         </mat-expansion-panel>
 
         <!--ABA COM OS DADOS DE DEFESA-->
-        <mat-expansion-panel class="mat-elevation-z1">
+        <mat-expansion-panel class="mat-elevation-z1" formGroupName="DefesaModell">
           <mat-expansion-panel-header>
             <mat-panel-title> Defesa </mat-panel-title>
           </mat-expansion-panel-header>
@@ -146,9 +148,11 @@
             ></textarea>
           </mat-form-field>
         </mat-expansion-panel>
+        </div>
       </mat-accordion>
+
       <br />
       <button mat-raised-button color="primary">SALVAR ALTERAÇÃO</button>
     </form>
   </mat-card>
-</div>
+

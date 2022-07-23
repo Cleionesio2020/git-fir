@@ -15,9 +15,8 @@ const routes: Routes = [
       { path: '', component: InicialComponent },
       { path: 'inicial', component: InicialComponent },
       { path: 'inicial/:id', component: InicialComponent },
-      { path: 'novo', component: NovoRegistroComponent },
       { path: 'novo/:acao/:id', component: NovoRegistroComponent },
-      { path: 'visualizar', component: VisualizarFichaComponent },
+      { path: 'visualizar/:id', component: VisualizarFichaComponent }
     ],
     canActivate: [AuthGuard],
   },

@@ -1,23 +1,36 @@
 <app-loading></app-loading>
 
-<mat-toolbar color="primary" class="toolbar" >
-  <button mat-icon-button class="example-icon" (click)="opened = !opened">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>GCMBH - FIR</span>
-  <span class="example-spacer">
-    <div class="menu">
+<mat-toolbar color="primary" class="toolbar">
+
+  <div class="logo">
+    <button mat-icon-button class="example-icon" (click)="opened = !opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>GCMBH - FIR</span>
+  </div>
+
+  <div class="menu">
+    <div class="link">
       <span>Inicio</span>
       <span>Lançamento</span>
       <span>Sobre</span>
     </div>
-  </span>
-  <button mat-icon-button class="icon-exit" (click)="logout()">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
-</mat-toolbar>
-<div class="container">
-  <div class="content">
-    <router-outlet></router-outlet>
+
+
+    <span *ngIf="userLogado">
+
+      <button mat-icon-button class="icon-exit" (click)="logout()" >
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+
+    </span>
   </div>
+
+</mat-toolbar>
+
+
+<div class="container">
+
+  <router-outlet></router-outlet>
+
 </div>

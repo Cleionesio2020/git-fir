@@ -20,12 +20,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   logar() {
-    console.log(this.user)
-
     this.loginService.logar(this.user).subscribe(
       data =>{
         if(data?.accessToken){
-          localStorage.setItem('accessToken',data.accessToken)
+          localStorage.setItem('userLogado', JSON.stringify(data))
           this.rourer.navigate(['inicial'])
         }
       }

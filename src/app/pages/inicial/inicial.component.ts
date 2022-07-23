@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { RESOURCE_CACHE_PROVIDER } from '@angular/platform-browser-dynamic';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { map, startWith } from 'rxjs/operators';
 import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
 import { GuardaModell } from 'src/app/models/GuarrdaModel';
 import { LancamentoModell } from 'src/app/models/LancamentoModell';
@@ -20,42 +17,61 @@ export class InicialComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private lancamentoService:LancamentoService
+    private lancamentoService: LancamentoService,
+    private guardaService: GuardaService
   ) {}
   guardaSelecionado!: any;
-  lancamentos!:LancamentoModell[]
+  lancamentos!: Array<LancamentoModell>;
 
   ngOnInit() {
+this.route.queryParams.subscribe(
+  data=>console.log(data)
+)
     this.route.paramMap.subscribe((params: ParamMap) => {
-      if(params){
-        console.log(">>>>>>>>",params)
-        this.lancamentoService.BuscaTodosLancametoGuarda(params.get('id')).subscribe(
-          resp=>{
-            if(resp){
-             this.lancamentos = resp
-             this.guardaSelecionado = this.lancamentos[0].fir?.guarda
+      if (params.get('id')) {
+        this.lancamentoService
+          .BuscaTodosLancametoGuarda(params.get('id'))
+          .subscribe((resp) => {
+            if (resp.length > 0) {
+              console.log("resp"+resp)
+              this.lancamentos = resp;
+              this.guardaSelecionado = this.lancamentos[0].fir?.guarda;
+            }else{
+              const state = window.history.state
+              if(state.navigationId>1){
+                this.lancamentos=[]
+                this.guardaSelecionado = state
+              }
+
             }
-          }
-        )
+          });
       }else{
-        this.guardaSelecionado=null;
+        this.guardaSelecionado = null;
+        this.lancamentos=[]
       }
     });
-
   }
+
   //navega pra rota ao clicar no botao
-  carregarPagina(param: string) {
-    console.log(param)
-    this.router.navigate([`/${param}/editar/2`]);
+  carregarPagina(param: any) {
+    this.router.navigate([`/novo/editar/${param}`]);
   }
 
-  carregarPaginaEditar(param:string) {
+  //NAVEGA PARA A PAGINA AO CLICAR NO BOTAO NOVO REGISTRO
+  carregarPaginaEditar(param: any) {
     this.router.navigate([`/novo/novo/${param}`]);
   }
 
+  //navega pra rota ao clicar no botao
+  carregarPaginavisualizar(param: any) {
+    this.router.navigate([`/visualizar/${param}`]);
+  }
+
   onSelected(event: GuardaModell) {
-    if(event){
-      this.router.navigate([`inicial/${event.bm}`]);
+    if (event) {
+      this.guardaService.setGuardaSelecionado(event)
+      this.router.navigate([`inicial/${event.bm}`],{state:event});
+
     }
   }
 
@@ -72,3 +88,26 @@ export class InicialComponent implements OnInit {
     });
   }
 }
+
+/*
+if(params){
+
+
+          resp=>{
+            if(resp){
+              console.log("resp"+resp)
+             this.lancamentos = resp
+             this.guardaSelecionado = this.lancamentos[0].fir?.guarda
+            }
+          },
+          erro=>{
+            console.log("erro")
+            this.guardaSelecionado=null
+          }
+        )
+      }else{
+        console.log("else")
+        this.guardaSelecionado=null
+      }
+    });
+    */

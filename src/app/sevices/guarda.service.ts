@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GuardaModell } from '../models/GuarrdaModel';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class GuardaService {
 
   baseURL: string = "http://localhost:8080";
+  private guardaSelecionado!: GuardaModell;
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +19,12 @@ export class GuardaService {
     return this.http.get<any>(`${this.baseURL}/api/guarda/all`)
   }
 
+  public getGuardaSelecionado(): GuardaModell {
+    return this.guardaSelecionado
+  }
 
+  public setGuardaSelecionado(guarda: GuardaModell) {
+    this.guardaSelecionado = guarda
+  }
 
 }
