@@ -19,11 +19,7 @@ export class LoginService {
 
   /** TENTA FAZER O LOGIN NO BAKEND */
   logar(userModel: UserModell): Observable<UserModell> {
-    return this.http.post<UserModell>(
-      `${this.baseURL}api/auth/signin`,
-      userModel,
-      { headers: this.headers }
-    );
+    return this.http.post<UserModell>( `${this.baseURL}api/auth/signin`,  userModel, { headers: this.headers });
   }
 
   /**VERIFICA O RETORNO PARA VER SE O TOKEN ESTA VALIDO */

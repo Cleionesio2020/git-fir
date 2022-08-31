@@ -14,9 +14,12 @@ export class GuardaService {
   constructor(private http: HttpClient) { }
 
 
-  /** TENTA FAZER O LOGIN NO BAKEND */
   getAllGuardas(): Observable<any> {
     return this.http.get<any>(`${this.baseURL}/api/guarda/all`)
+  }
+
+  getbyId(bmGuarda:string): Observable<GuardaModell> {
+    return this.http.get<GuardaModell>(`${this.baseURL}/api/guarda/${bmGuarda}`)
   }
 
   public getGuardaSelecionado(): GuardaModell {

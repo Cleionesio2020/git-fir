@@ -3,22 +3,19 @@
 <mat-toolbar color="primary" class="toolbar">
 
   <div class="logo">
-    <button mat-icon-button class="example-icon" (click)="opened = !opened">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>GCMBH - FIR</span>
+    <span routerLink="/inicial">GCMBH - FIR</span>
   </div>
 
   <div class="menu">
     <div class="link">
-      <span>Inicio</span>
-      <span>Lançamento</span>
+      <span>ùltimos Lançamentos</span>
+      <a mat-tab-link  routerLink="/definicoes"><span>Definições</span></a>
       <span>Sobre</span>
+
     </div>
 
 
     <span *ngIf="userLogado">
-
       <button mat-icon-button class="icon-exit" (click)="logout()" >
         <mat-icon>exit_to_app</mat-icon>
       </button>

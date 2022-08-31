@@ -1,7 +1,7 @@
 <form class="example-form">
     <div class="filtro">
         <mat-form-field class="example-full-width" appearance="fill">
-            <input type="text"   matInput  #inputShearch 
+            <input type="text"   matInput  #inputShearch
             (input)="search(inputShearch.value)" [matAutocomplete]="auto">
             <mat-label>Fitrar por nome</mat-label>
             <button mat-icon-button matSuffix *ngIf="inputShearch.value" (click)="inputShearch.value = ''">

@@ -11,7 +11,7 @@
       <div class="avatar">
         <img
           mat-card-sm-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          src="{{IMAGES_AVATAR}}/{{ guardaSelecionado.bm }}.jpg"
         />
       </div>
 
@@ -22,6 +22,8 @@
           {{ guardaSelecionado.bm }}
         </mat-card-title>
         <mat-card-subtitle>{{ guardaSelecionado.cargo }}</mat-card-subtitle>
+        <mat-card-subtitle><app-stars [pontos]="totalpontos"> </app-stars> {{totalpontos}} pontos
+        </mat-card-subtitle>
 
         <button
           mat-stroked-button
@@ -39,12 +41,13 @@
         <div class="avatar">
           <img
             mat-card-sm-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            src="{{IMAGES_AVATAR}}/anonimo.jpg"
           />
+
         </div>
         <div class="dados">
           <mat-card-title class="title-bio"
-            >Gerenciamento de Ficha individua (FIR)</mat-card-title
+            >Gerenciamento de Ficha Individual (FIR)</mat-card-title
           >
           <mat-card-subtitle
             >Selecione um registro pra começar...</mat-card-subtitle
@@ -56,10 +59,12 @@
     <div *ngIf="lancamentos else templatesemRegistro">
       <mat-card class="card-lancamentos" *ngFor="let lanc of lancamentos">
         <div class="lancameto-title">
-          <mat-card-title class="lancameto-title-principal">{{
-            lanc.tipoLancamento.descricao
-          }}</mat-card-title>
-          <mat-card-subtitle>{{ lanc.dataLancamento }}</mat-card-subtitle>
+          <mat-card-title class="lancameto-title-principal">
+            {{lanc.tipoLancamento.descricao}}
+          </mat-card-title>
+          <mat-card-subtitle>Pontos: {{ lanc.tipoLancamento.pontos}}</mat-card-subtitle>
+          <mat-card-subtitle>{{ lanc.dataLancamento | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+
         </div>
 
         <div class="content-buttons">
@@ -82,12 +87,17 @@
     <ng-template #templatesemRegistro>
       <mat-card class="card-lancamentos">
         <div class="lancameto-title">
-          <mat-card-title class="lancameto-title-principal"
-            >Nenhum lancçamento encontrado</mat-card-title
+          <mat-card-title class="lancameto-title-principal">Nenhum lancçamento encontrado</mat-card-title
           >
           <mat-card-subtitle></mat-card-subtitle>
         </div>
       </mat-card>
     </ng-template>
+    <div class="bottom-vertudo" *ngIf="lancamentos.length>1">
+      <button mat-raised-button color="primary"  (click)="carregarPaginavisualizarTodos()">
+            <mat-icon color="blue">description</mat-icon> Visualisar todos
+      </button>
+
+    </div>
   </mat-card>
 </mat-card>

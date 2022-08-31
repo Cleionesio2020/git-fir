@@ -17,7 +17,7 @@ export class LancamentoService {
     return this.http.post<LancamentoModell>(`${this.baseURL}/api/lancamento`, lancamento)
   }
 
-  BuscaTodosLancametoGuarda(bmParem:string | null):Observable<LancamentoModell[]>{
+ lancametoDoGuarda(bmParem:string | null):Observable<LancamentoModell[]>{
     //http://localhost:8080/api/lancamento/query_bm?param=87134-x
    return  this.http.get<LancamentoModell[]>(`${this.baseURL}/api/lancamento/query_bm?param=${bmParem}`)
 

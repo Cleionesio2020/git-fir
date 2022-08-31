@@ -1,121 +1,69 @@
+<mat-card>
+  <div class="header">
+    <div>
+      <mat-card-title class="titulo-maior">{{lancamento.fir.guarda.nome}} -
+        {{lancamento.fir.guarda.bm}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-card-title class="titulo-menor">{{lancamento.tipoLancamento.descricao}}</mat-card-title>
 
-  <mat-card>
-    <div class="header">
-      <div>
-        <mat-card-title class="titulo-maior">{{lancamento?.fir?.guarda?.nome}} -
-          {{lancamento?.fir?.guarda?.bm}}</mat-card-title>
-            <mat-card-subtitle>
-        <mat-card-title class="titulo-menor">{{lancamento?.tipoLancamento?.descricao}}</mat-card-title>
-
-       Data lancamento {{lancamento?.dataLancamento | date: 'dd/MM/yyyy'}}
+        Data lancamento {{lancamento.dataLancamento | date: 'dd/MM/yyyy'}}
       </mat-card-subtitle>
-      </div>
-      <button mat-button  (click)=" paginaInicial()">
-         <mat-icon>arrow_back</mat-icon> Voltar</button>
     </div>
+    <button mat-button (click)=" paginaInicial()">
+      <mat-icon>arrow_back</mat-icon> Voltar
+    </button>
+  </div>
 
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-      <mat-accordion>
-        <mat-expansion-panel class="mat-elevation-z1">
-          <mat-expansion-panel-header>
-            <mat-panel-title> Lançamento </mat-panel-title>
-          </mat-expansion-panel-header>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-accordion>
 
+      <mat-expansion-panel class="mat-elevation-z1">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Lançamento </mat-panel-title>
+        </mat-expansion-panel-header>
 
-          <mat-form-field appearance="fill" class="example-select" formGroupName="tipoLancamentoModell" >
-            <mat-label>Tipo Lancamento</mat-label>
-            <mat-select formControlName="descricao">
-              <mat-option
-                *ngFor="let lanc of  dadosCobos$ | async"
-                value="{{ lanc.descricao }}" >
-                {{  lanc.descricao }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div formGroupName="tipoLancamentoModell">
+
+        <mat-form-field appearance="fill" class="example-select" >
+          <mat-label>Tipo Lancamento</mat-label>
+          <mat-select formControlName="descricao">
+            <mat-option *ngFor="let lanc of  dadosCobos$ | async" value="{{ lanc.descricao }}">
+              {{ lanc.descricao }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Data da Lançamento</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker0"
-              formControlName="dataLancamento"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker0"
-            ></mat-datepicker-toggle>
+            <input matInput [matDatepicker]="picker0" formControlName="dataLancamento" />
+            <mat-datepicker-toggle matSuffix [for]="picker0"></mat-datepicker-toggle>
             <mat-datepicker #picker0></mat-datepicker>
           </mat-form-field>
-        </mat-expansion-panel>
+        </div>
+      </mat-expansion-panel>
 
-        <!--Fir-->
-        <div formGroupName="firModell">
-        <mat-expansion-panel class="mat-elevation-z1" >
+      <!--Fir-->
+      <div formGroupName="firModell">
+        <mat-expansion-panel class="mat-elevation-z1">
           <mat-expansion-panel-header>
             <mat-panel-title> Origem / Sintese / Data </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-form-field appearance="fill">
             <mat-label>Data do fato</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker1"
-              formControlName="dataLancFir"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker1"
-            ></mat-datepicker-toggle>
+            <input matInput [matDatepicker]="picker1" formControlName="dataLancFir" />
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Orígem </mat-label>
-            <textarea
-              matInput
-              placeholder="Aqui a orígem..."
-              formControlName="origem"
-            ></textarea>
+            <textarea matInput placeholder="Aqui a orígem..." formControlName="origem"></textarea>
           </mat-form-field>
 
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Síntese </mat-label>
-            <textarea
-              matInput
-              placeholder="Aqui a síntese..."
-              formControlName="sintese"
-            ></textarea>
-          </mat-form-field>
-        </mat-expansion-panel>
-
-        <!--ABA COM OS DADOS DE DECISÃO-->
-
-        <mat-expansion-panel class="mat-elevation-z1"  formGroupName="DecisaoModell">
-          <mat-expansion-panel-header>
-            <mat-panel-title> Decisão </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Data da Decisão</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker2"
-              formControlName="dataDecisao"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker2"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Decisão </mat-label>
-            <textarea
-              matInput
-              placeholder="Aqui a orígem..."
-              formControlName="decisao"
-            ></textarea>
+            <textarea matInput placeholder="Aqui a síntese..." formControlName="sintese"></textarea>
           </mat-form-field>
         </mat-expansion-panel>
 
@@ -127,32 +75,42 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Data da Defesa</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker3"
-              formControlName="dataDefesa"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker3"
-            ></mat-datepicker-toggle>
+            <input matInput [matDatepicker]="picker3" formControlName="dataDefesa" />
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
             <mat-datepicker #picker3></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Defesa </mat-label>
-            <textarea
-              matInput
-              placeholder="Aqui a orígem..."
-              formControlName="defesa"
-            ></textarea>
+            <textarea matInput placeholder="Aqui a orígem..." formControlName="defesa"></textarea>
           </mat-form-field>
         </mat-expansion-panel>
-        </div>
-      </mat-accordion>
 
-      <br />
-      <button mat-raised-button color="primary">SALVAR ALTERAÇÃO</button>
-    </form>
-  </mat-card>
+        <!--ABA COM OS DADOS DE DECISÃO-->
 
+        <mat-expansion-panel class="mat-elevation-z1" formGroupName="DecisaoModell">
+          <mat-expansion-panel-header>
+            <mat-panel-title> Decisão </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Data da Decisão</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dataDecisao" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Decisão </mat-label>
+            <textarea matInput placeholder="Aqui a orígem..." formControlName="decisao"></textarea>
+          </mat-form-field>
+        </mat-expansion-panel>
+
+
+      </div>
+    </mat-accordion>
+
+    <br />
+    <button mat-raised-button color="primary">SALVAR ALTERAÇÃO</button>
+  </form>
+</mat-card>

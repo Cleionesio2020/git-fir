@@ -1,50 +1,44 @@
-<mat-card class="card-header">
- <mat-card-title>Cleionesio Soares Ribeiro - 87134-X</mat-card-title>
- <button mat-button  (click)="paginaInicial()"> <mat-icon>arrow_back</mat-icon> Voltar</button>
+<mat-card>
+  <div class="header">
+    <div>
+      <mat-card-title class="titulo-maior">{{lancamento.fir.guarda?.nome}} -
+        {{lancamento.fir.guarda?.bm}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-card-title class="titulo-menor">{{lancamento.tipoLancamento.descricao}}</mat-card-title>
+
+        Data lancamento {{lancamento.dataLancamento | date: 'dd/MM/yyyy'}}
+      </mat-card-subtitle>
+    </div>
+    <button mat-button (click)="paginaInicial()">
+      <mat-icon>arrow_back</mat-icon> Voltar
+    </button>
+  </div>
+
+  <mat-card class="example-card">
+    <mat-card-title class="title">Orígem</mat-card-title>
+    <mat-card-subtitle> {{lancamento.fir.data| date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{lancamento.fir.origem}}</p>
+    </mat-card-content>
+
+    <mat-divider inset style="  margin-bottom:20px;margin-top:20px"></mat-divider>
 
 
-</mat-card>
-<mat-card class="example-card">
-  <mat-card-title class="title">Nota meritória</mat-card-title>
- 
-  <mat-card-subtitle>25/05/2015</mat-card-subtitle>
+    <mat-card-title class="title">Defesa</mat-card-title>
+    <mat-card-subtitle> {{lancamento.fir.defesa.defesa| date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{lancamento.fir.defesa.defesa}}</p>
+    </mat-card-content>
 
-  <mat-card-content>
-    <p>This card has divider and indeterminate progress as footer</p>
-    <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-      from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-      originally bred for hunting.</p>
-  </mat-card-content>
+    <mat-divider inset style="  margin-bottom:20px;margin-top:20px"></mat-divider>
 
-  <mat-divider inset style="  margin-bottom:20px;
-    margin-top:20px"></mat-divider>
 
-<mat-card-title class="title">Defeza</mat-card-title>
-<mat-card-subtitle>20/05/2016</mat-card-subtitle>
-  <mat-card-content>
-    <p>This card has divider and indeterminate progress as footer</p>
-    <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-      from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-      originally bred for hunting.</p>
-  </mat-card-content>
+    <mat-card-title class="title">Decisão</mat-card-title>
+    <mat-card-subtitle> {{lancamento.fir.decisao.dataDecisao| date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{lancamento.fir.decisao.decisao}}</p>
+    </mat-card-content>
 
-  <mat-divider inset style="margin-bottom:20px;
-
-  margin-top:20px"></mat-divider>
-
-<mat-card-title class="title">Decisão</mat-card-title>
-<mat-card-subtitle>20/05/2016</mat-card-subtitle>
-<mat-card-content>
-  <p>This card has divider and indeterminate progress as footer</p>
-  <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-    from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-    originally bred for hunting.</p>
-</mat-card-content>
-
-<mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
+  </mat-card>
 
 </mat-card>

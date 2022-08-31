@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -30,7 +30,9 @@ export class NovoRegistroComponent implements OnInit {
     private route: ActivatedRoute,
     private guardaService: GuardaService,
     private router: Router
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.configuraAcaoAoReceberParametro();
@@ -39,6 +41,7 @@ export class NovoRegistroComponent implements OnInit {
 
   onSubmit() {
     const value = this.myForm.value;
+    console.log(this.myForm)
     const LancamentoASalvar = { ...this.lancamento };
 
     /*
@@ -52,20 +55,21 @@ export class NovoRegistroComponent implements OnInit {
 
   configForm() {
     this.myForm = this.fb.group({
-        dataLancamento: [this.lancamento.dataLancamento],
-        tipoLancamentoModell: this.fb.group({
-        descricao: [this.lancamento.tipoLancamento.descricao],
+      tipoLancamentoModell: this.fb.group({
+        dataLancamento: [this.lancamento.dataLancamento, Validators.required],
+        descricao: [this.lancamento.tipoLancamento.descricao, Validators.required],
       }),
 
       firModell: this.fb.group({
-        dataLancFir: [this.lancamento.fir?.data],
-        sintese: [this.lancamento.fir?.sintese],
-        origem: [this.lancamento.fir?.origem],
+        dataLancFir: [this.lancamento.fir?.data, Validators.required],
+        sintese: [this.lancamento.fir?.sintese, Validators.required],
+        origem: [this.lancamento.fir?.origem, Validators.required],
 
         DefesaModell: this.fb.group({
-          dataDefesa: [this.lancamento.fir?.defesa?.dataDefesa],
+          dataDefesa: [this.lancamento.fir?.defesa?.dataDefesa, ],
           defesa: [this.lancamento.fir?.defesa?.defesa],
         }),
+
         DecisaoModell: this.fb.group({
           dataDecisao: [this.lancamento.fir?.decisao?.dataDecisao],
           decisao: [this.lancamento.fir?.decisao?.decisao],
@@ -80,7 +84,6 @@ export class NovoRegistroComponent implements OnInit {
 
   //PEGA UM POSSIVEL OBGETO PASSADO NA ROTA
   public configuraAcaoAoReceberParametro(): void {
-
     this.route.paramMap.subscribe(
       (res => {
         if (res) {
@@ -88,9 +91,16 @@ export class NovoRegistroComponent implements OnInit {
             this.carregaLancametoParaEditar(Number(res.get('id')));
           } else {
             if (res.get('acao') === 'novo') {
-              this.guardaASerEditado = this.guardaService.getGuardaSelecionado();
-              this.lancamento = this.initLancamento();
-              this.configForm();
+              const bm = res.get('id')
+              if (bm) {
+                this.guardaService.getbyId(bm).subscribe(
+                  res => {
+                    this.guardaASerEditado = res
+                    this.lancamento = this.initLancamento();
+                    this.configForm();
+                  }
+                )
+              }
             }
           }
         }

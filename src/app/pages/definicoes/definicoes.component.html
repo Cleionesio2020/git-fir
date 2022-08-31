@@ -1,0 +1,59 @@
+<mat-card>
+  <div class="header-card-table">
+    <mat-card-title>Lista de usuários do sistema</mat-card-title>
+    <button mat-icon-button  routerLink="/edita_novo">
+      <mat-icon>person_add</mat-icon>
+   </button>
+  </div>
+
+
+
+<table mat-table [dataSource]="users" >
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef> Usuário </th>
+    <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+  </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Nível acesso </th>
+    <td mat-cell *matCellDef="let user"  >
+
+    <span *ngFor="let role of user.roles">{{role.name}}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let user">
+
+      <button mat-icon-button class="icon-edit" (click)="editaUser(user.id)">
+         <mat-icon >edit</mat-icon>
+      </button>
+
+      <button mat-icon-button  class="icon-remove">
+        <mat-icon>delete_forever</mat-icon>
+     </button>
+
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-card>

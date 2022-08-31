@@ -1,0 +1,43 @@
+<mat-card >
+  <mat-card-title>Lista de usuários do sistema</mat-card-title>
+
+  <app-autocomplete (selected)="onSelected($event)"></app-autocomplete>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="example-form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nome Completo</mat-label>
+      <input matInput placeholder="nome completo" type="text" formControlName="name" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="email" type="email" formControlName="email" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Usuário" type="text" formControlName="username" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput placeholder="senha" type="password" formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Confirmação da Senha</mat-label>
+      <input matInput placeholder="comfirmação da senha" type="password"  formControlName="comfirmPassword">
+    </mat-form-field>
+
+    <section class="example-section" formGroupName="roles" >
+      <mat-checkbox class="example-margin " color="primary" formControlName="ADMIN">Admin</mat-checkbox>
+      <mat-checkbox class="example-margin"  color="primary" formControlName="USER1">User1</mat-checkbox>
+      <mat-checkbox class="example-margin" color="primary" formControlName="USER2">User2</mat-checkbox>
+      <mat-checkbox class="example-margin" color="primary" formControlName="USER3">User3</mat-checkbox>
+    </section>
+
+    <button mat-raised-button color="primary" type="submit">SALVAR</button>
+  </form>
+
+</mat-card>

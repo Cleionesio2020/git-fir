@@ -11,3 +11,20 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(240, 245, 243);
+  }
+
+  .titulo-maior{
+    font-size: 18px;
+    color: #2a2a4e;
+  }
+
+  .titulo-menor{
+    font-size: 18px;
+  }

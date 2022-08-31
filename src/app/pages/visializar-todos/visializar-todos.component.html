@@ -1,0 +1,54 @@
+<mat-card>
+  <div class="header">
+    <div>
+      <mat-card-title class="titulo-maior">{{lancamentos[0].fir.guarda.nome}} -
+        {{lancamentos[0].fir.guarda.bm}}</mat-card-title>
+    </div>
+    <button mat-button (click)="paginaInicial()">
+      <mat-icon>arrow_back</mat-icon> Voltar
+    </button>
+  </div>
+  <mat-accordion>
+
+
+    <mat-expansion-panel class="mat-elevation-z1" *ngFor="let lancamento of lancamentos">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{lancamento.tipoLancamento.descricao}}
+         <span class="title-data"> {{"  - "}} {{lancamento.dataLancamento | date: 'dd/MM/yyyy'}}</span>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card class="example-card">
+        <mat-card-title class="title">Orígem</mat-card-title>
+        <mat-card-subtitle> {{lancamento.fir.data| date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{lancamento.fir.origem}}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="example-card">
+        <mat-card-title class="title">Decisão</mat-card-title>
+        <mat-card-subtitle> {{lancamento.fir.decisao.dataDecisao| date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{lancamento.fir.decisao.decisao}}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="example-card" *ngIf="lancamento.fir.defesa">
+        <mat-card-title class="title">Defesa</mat-card-title>
+        <mat-card-subtitle  >
+          {{lancamento.fir.defesa.dataDefesa | date: 'dd/MM/yyyy'}}
+          </mat-card-subtitle>
+        <mat-card-content>
+          <p>{{lancamento.fir.defesa.defesa}}</p>
+        </mat-card-content>
+      </mat-card>
+
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

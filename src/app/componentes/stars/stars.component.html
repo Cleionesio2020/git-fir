@@ -1,0 +1,9 @@
+
+<div class="estrelas">
+  <div *ngFor="let estrela of arrayEstrela">
+    <mat-icon>star</mat-icon>
+  </div>
+  <mat-icon *ngIf="meiaEstrela">star_half</mat-icon>
+  <div *ngIf="totalEstrela<1"></div>
+
+</div>

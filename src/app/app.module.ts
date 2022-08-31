@@ -35,10 +35,18 @@ import { AutocompleteService } from './sevices/autocomplete.service';
 import { DialogComponent } from './componentes/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { VisualizarFichaComponent } from './pages/visualizar-ficha/visualizar-ficha.component';
 import { MatSelectModule } from '@angular/material/select';
 import { LancamentoService } from './sevices/Lancamento.service';
 import { DatePipe } from '@angular/common';
+import { DefinicoesComponent } from './pages/definicoes/definicoes.component';
+import { EditarenovoComponent } from './pages/definicoes/editarenovo/editarenovo.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UserService } from './sevices/user.service';
+import { StarsComponent } from './componentes/stars/stars.component';
+import { VisializarTodosComponent } from './pages/visializar-todos/visializar-todos.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +59,10 @@ import { DatePipe } from '@angular/common';
     AutocompleteComponent,
     DialogComponent,
     VisualizarFichaComponent,
+    DefinicoesComponent,
+    EditarenovoComponent,
+    StarsComponent,
+    VisializarTodosComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,12 +90,15 @@ import { DatePipe } from '@angular/common';
     MatTableModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [
     LoginService,
     LoadingService,
     AutocompleteService,
     LancamentoService,
+    UserService,
     DatePipe,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     {
